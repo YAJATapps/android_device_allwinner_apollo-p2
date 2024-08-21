@@ -26,8 +26,7 @@ BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/etc/firmware
 
 # wifi and bt configuration
 # 1. Wifi Configuration
-BOARD_WIFI_VENDOR := wlan0
-#TODO common
+BOARD_WIFI_VENDOR := common
 BOARD_USR_WIFI    :=
 WIFI_DRIVER_MODULE_PATH :=
 WIFI_DRIVER_MODULE_NAME :=
@@ -39,4 +38,4 @@ BOARD_HAVE_BLUETOOTH_NAME :=
 BOARD_BLUETOOTH_CONFIG_DIR := device/softwinner/apollo/common/wireless/bluetooth
 BOARD_BLUETOOTH_TTY := /dev/ttyAS1
 # Must include after wifi/bt configuration
-#TODO include device/softwinner/common/config/wireless/wireless_config.mk
+include device/softwinner/common/config/wireless/wireless_config.mk
