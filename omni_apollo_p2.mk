@@ -1,9 +1,11 @@
-PRODUCT_PLATFORM_PATH := device/softwinner/apollo
-
-PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
-
 # Device tree path.
 DEVICE_PATH := device/allwinner/apollo-p2
+PRODUCT_PLATFORM_PATH := device/softwinner/apollo
+
+# Whether the build is for orange pi zero 2w (true) or orange pi zero 3 (false)
+PRODUCT_ORANGE_PI_ZERO_2W := true
+
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
 # Inherit from device.
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
@@ -14,8 +16,12 @@ PRODUCT_BOARD := p2
 PRODUCT_DEVICE := apollo-p2
 PRODUCT_NAME := omni_apollo_p2
 PRODUCT_BRAND := Allwinner
-PRODUCT_MODEL := orangepizero2w
 PRODUCT_MANUFACTURER := Allwinner
+ifeq ($(PRODUCT_ORANGE_PI_ZERO_2W), true)
+    PRODUCT_MODEL := orangepizero2w
+else
+    PRODUCT_MODEL := orangepizero3
+endif
 
 PRODUCT_PREBUILT_PATH := longan/out/$(TARGET_BOARD_IC)/$(PRODUCT_BOARD)/android
 
