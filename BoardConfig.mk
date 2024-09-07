@@ -1,7 +1,7 @@
 #BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 #ALLOW_MISSING_DEPENDENCIES := true
 
-# Disable sparse on all filesystem images
+# Enable sparse on all filesystem images
 TARGET_USERIMAGES_SPARSE_EROFS_DISABLED := false
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 TARGET_USERIMAGES_SPARSE_F2FS_DISABLED := false
