@@ -19,11 +19,11 @@ PRODUCT_BRAND := Allwinner
 PRODUCT_MANUFACTURER := Allwinner
 ifeq ($(PRODUCT_ORANGE_PI_ZERO_2W), true)
     PRODUCT_MODEL := orangepizero2w
+    PRODUCT_PREBUILT_PATH := longan/out/$(TARGET_BOARD_IC)/$(PRODUCT_BOARD)/android
 else
     PRODUCT_MODEL := orangepizero3
+    PRODUCT_PREBUILT_PATH := longan/out/$(TARGET_BOARD_IC)/p3/android
 endif
-
-PRODUCT_PREBUILT_PATH := longan/out/$(TARGET_BOARD_IC)/$(PRODUCT_BOARD)/android
 
 PRODUCT_BUILD_VENDOR_BOOT_IMAGE := true
 
