@@ -1,3 +1,3 @@
 # Orange Pi Zero 2W (apollo-p2)
  
-OmniROM Android 12.1 port.
+OmniROM Android 14.0 port.
