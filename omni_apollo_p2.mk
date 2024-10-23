@@ -55,7 +55,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 PRODUCT_HAS_UVC_CAMERA := true
 
 PRODUCT_AAPT_CONFIG := mdpi xlarge hdpi xhdpi large
-PRODUCT_AAPT_PREF_CONFIG := mdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 $(call inherit-product, $(PRODUCT_PLATFORM_PATH)/apollo-p2/camera/config.mk)
 $(call inherit-product, $(PRODUCT_PLATFORM_PATH)/common/*/config.mk)
