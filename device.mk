@@ -2,7 +2,7 @@
 PRODUCT_ORANGE_PI_ZERO_2W := true
 
 # Whether to use TV configs
-PRODUCT_ORANGE_PI_TV := true
+PRODUCT_ORANGE_PI_TV := false
 
 # Inherit common OmniROM
 $(call inherit-product, vendor/omni/config/common.mk)
