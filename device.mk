@@ -1,3 +1,9 @@
+# Whether the build is for orange pi zero 2w (true) or orange pi zero 3 (false)
+PRODUCT_ORANGE_PI_ZERO_2W := true
+
+# Whether to use TV configs
+PRODUCT_ORANGE_PI_TV := true
+
 # Inherit common OmniROM
 $(call inherit-product, vendor/omni/config/common.mk)
 
@@ -5,4 +11,52 @@ PRODUCT_PACKAGES += ExactCalculator
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.disable=true \
+
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
+
+PRODUCT_BUILD_VENDOR_BOOT_IMAGE := true
+
+CONFIG_LOW_RAM_DEVICE := false
+CONFIG_SUPPORT_GMS := false
+CONFIG_OTA_FROM_10 := false
+BOARD_HAS_SECURE_OS := true
+
+#set speaker project(true: double speaker, false: single speaker)
+#set default eq
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.spk_dul.used=false \
+    ro.vendor.audio.eq=false
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.sys.timezone=America/Toronto \
+    persist.sys.country=CA \
+    persist.sys.language=en
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.lcd_density=160
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.minui.default_rotation=ROTATION_NONE \
+    ro.recovery.ui.touch_high_threshold=60
+
+PRODUCT_HAS_UVC_CAMERA := true
+
+PRODUCT_AAPT_CONFIG := mdpi xlarge hdpi xhdpi large
+
+# Device identifier
+TARGET_BOARD_IC := h618
+PRODUCT_BOARD := p2
+PRODUCT_DEVICE := apollo-p2
+PRODUCT_BRAND := Allwinner
+PRODUCT_MANUFACTURER := Allwinner
+ifeq ($(PRODUCT_ORANGE_PI_ZERO_2W), true)
+    PRODUCT_MODEL := orangepizero2w
+    PRODUCT_PREBUILT_PATH := longan/out/$(TARGET_BOARD_IC)/$(PRODUCT_BOARD)/android
+else
+    PRODUCT_MODEL := orangepizero3
+    PRODUCT_PREBUILT_PATH := longan/out/$(TARGET_BOARD_IC)/p3/android
+endif
+
+# Include prebuilt kernel
+PRODUCT_COPY_FILES += $(PRODUCT_PREBUILT_PATH)/bImage:kernel
 

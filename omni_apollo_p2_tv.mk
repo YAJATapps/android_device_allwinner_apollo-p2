@@ -1,9 +1,19 @@
 # Inherit from device.
 $(call inherit-product, device/allwinner/apollo-p2/device.mk)
 
-PRODUCT_AAPT_PREF_CONFIG := hdpi
+PRODUCT_AAPT_PREF_CONFIG := tvdpi
 
-PRODUCT_NAME := omni_apollo_p2
+$(call inherit-product, device/google/atv/products/atv_base.mk)
+
+# Android TV
+PRODUCT_PACKAGES += \
+    DocumentsUI \
+    LeanbackIME \
+    TvProvision \
+    TvSampleLeanbackLauncher \
+    TvSettingsTwoPanel
+
+PRODUCT_NAME := omni_apollo_p2_tv
 
 # Device tree path.
 PRODUCT_PLATFORM_PATH := device/softwinner/apollo
