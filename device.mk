@@ -1,9 +1,6 @@
 # Whether the build is for orange pi zero 2w (true) or orange pi zero 3 (false)
 PRODUCT_ORANGE_PI_ZERO_2W := true
 
-# Whether to use TV configs
-PRODUCT_ORANGE_PI_TV := false
-
 # Inherit common OmniROM
 $(call inherit-product, vendor/omni/config/common.mk)
 

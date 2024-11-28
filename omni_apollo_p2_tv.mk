@@ -7,7 +7,6 @@ $(call inherit-product, device/google/atv/products/atv_base.mk)
 
 # Android TV
 PRODUCT_PACKAGES += \
-    DocumentsUI \
     LeanbackIME \
     TvProvision \
     TvSampleLeanbackLauncher \
