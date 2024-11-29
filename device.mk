@@ -30,7 +30,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.sys.language=en
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=160
+    ro.sf.lcd_density=120
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.minui.default_rotation=ROTATION_NONE \
@@ -38,7 +38,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 PRODUCT_HAS_UVC_CAMERA := true
 
-PRODUCT_AAPT_CONFIG := mdpi xlarge hdpi xhdpi large
+PRODUCT_AAPT_CONFIG := ldpi mdpi xlarge hdpi xhdpi large
 
 # Device identifier
 TARGET_BOARD_IC := h618
