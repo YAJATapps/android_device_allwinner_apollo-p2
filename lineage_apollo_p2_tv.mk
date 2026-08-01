@@ -12,7 +12,7 @@ PRODUCT_PACKAGES += \
     TvSampleLeanbackLauncher \
     TvSettingsTwoPanel
 
-PRODUCT_NAME := omni_apollo_p2_tv
+PRODUCT_NAME := lineage_apollo_p2_tv
 
 # Device tree path.
 PRODUCT_PLATFORM_PATH := device/softwinner/apollo

@@ -3,7 +3,7 @@ $(call inherit-product, device/allwinner/apollo-p2/device.mk)
 
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-PRODUCT_NAME := omni_apollo_p2
+PRODUCT_NAME := lineage_apollo_p2
 
 # Device tree path.
 PRODUCT_PLATFORM_PATH := device/softwinner/apollo

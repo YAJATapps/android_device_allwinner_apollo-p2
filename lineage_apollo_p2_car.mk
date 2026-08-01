@@ -4,7 +4,7 @@ $(call inherit-product, device/allwinner/apollo-p2/device.mk)
 PRODUCT_AAPT_PREF_CONFIG := ldpi
 PRODUCT_CHARACTERISTICS := automotive,nosdcard
 
-PRODUCT_NAME := omni_apollo_p2_car
+PRODUCT_NAME := lineage_apollo_p2_car
 
 # Device tree path.
 PRODUCT_PLATFORM_PATH := device/softwinner/apollo
