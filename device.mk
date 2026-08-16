@@ -4,11 +4,8 @@ PRODUCT_ORANGE_PI_ZERO_2W := true
 # Inherit common LineageOS
 $(call inherit-product, vendor/lineage/config/common.mk)
 
-# DRM Graphics & Buffer Allocator (Panfrost / DRM-KMS)
+# Packages
 PRODUCT_PACKAGES += \
-    android.hardware.composer.hwc3-service.drm \
-    gralloc.minigbm \
-    libgbm \
     ExactCalculator
 
 PRODUCT_PROPERTY_OVERRIDES += \
