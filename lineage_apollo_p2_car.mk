@@ -4,6 +4,8 @@ $(call inherit-product, device/allwinner/apollo-p2/device.mk)
 PRODUCT_AAPT_PREF_CONFIG := ldpi
 PRODUCT_CHARACTERISTICS := automotive,nosdcard
 
+$(call inherit-product, vendor/lineage/config/common_car.mk)
+
 PRODUCT_NAME := lineage_apollo_p2_car
 
 # Device tree path.

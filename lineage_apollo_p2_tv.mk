@@ -2,7 +2,9 @@
 $(call inherit-product, device/allwinner/apollo-p2/device.mk)
 
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
+PRODUCT_CHARACTERISTICS := tv,nosdcard
 
+$(call inherit-product, vendor/lineage/config/common_tv.mk)
 $(call inherit-product, device/google/atv/products/atv_base.mk)
 
 # Android TV
