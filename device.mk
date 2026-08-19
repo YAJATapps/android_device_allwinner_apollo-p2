@@ -6,7 +6,10 @@ $(call inherit-product, vendor/lineage/config/common.mk)
 
 # Packages
 PRODUCT_PACKAGES += \
-    ExactCalculator
+    vendor_compatibility_matrix.xml \
+    vendor_manifest.xml
+
+PRODUCT_SHIPPING_API_LEVEL := 36
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.disable=true \
@@ -58,4 +61,8 @@ endif
 
 # Include prebuilt kernel
 PRODUCT_COPY_FILES += $(PRODUCT_PREBUILT_PATH)/bImage:kernel
+
+# Include standard wireless configuration
+include device/softwinner/common/config/wireless/wireless_config.mk
+
 

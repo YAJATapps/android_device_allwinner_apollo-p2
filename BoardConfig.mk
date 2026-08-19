@@ -4,12 +4,6 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 TARGET_USERIMAGES_SPARSE_F2FS_DISABLED := false
 TARGET_USERIMAGES_SPARSE_SQUASHFS_DISABLED := false
 
-# Kernel
-#TARGET_KERNEL_ARCH := arm64
-#TARGET_KERNEL_HEADER_ARCH := arm64
-#TARGET_KERNEL_SOURCE := kernel/allwinner/linux-5.4
-#TARGET_KERNEL_CONFIG := sun50iw9p1smp_h618_android_defconfig
-#TARGET_PREBUILT_KERNEL := $(PRODUCT_PREBUILT_PATH)/bImage
 BOARD_KERNEL_IMAGE_NAME := bImage
 
 include device/softwinner/common/BoardConfigCommon.mk
@@ -21,17 +15,11 @@ BOARD_KERNEL_CMDLINE += androidboot.dtbo_idx=0,1,2
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/etc/firmware
 
 
-# wifi and bt configuration (disabled for initial bringup)
-# BOARD_WIFI_VENDOR := common
-# BOARD_USR_WIFI    :=
-# WIFI_DRIVER_MODULE_PATH :=
-# WIFI_DRIVER_MODULE_NAME :=
-# WIFI_DRIVER_MODULE_ARG  :=
+# Wireless Board Configuration
+BOARD_HOSTAPD_DRIVER        := NL80211
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+WPA_SUPPLICANT_VERSION      := VER_0_8_X
+BOARD_HAVE_BLUETOOTH        := true
+BOARD_BLUETOOTH_CONFIG_DIR  ?= device/softwinner/apollo/common/wireless/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(BOARD_BLUETOOTH_CONFIG_DIR)
 
-# 2. Bluetooth Configuration
-# BOARD_BLUETOOTH_VENDOR    := common
-# BOARD_HAVE_BLUETOOTH_NAME :=
-# BOARD_BLUETOOTH_CONFIG_DIR := device/softwinner/apollo/common/wireless/bluetooth
-# BOARD_BLUETOOTH_TTY := /dev/ttyAS1
-# Must include after wifi/bt configuration
-# include device/softwinner/common/config/wireless/wireless_config.mk
