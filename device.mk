@@ -61,7 +61,11 @@ endif
 # Include prebuilt kernel
 PRODUCT_COPY_FILES += $(PRODUCT_PREBUILT_PATH)/bImage:kernel
 
+# Inherit prebuilt vendor blobs (Wi-Fi, Firmware, Kernel modules, Mesa3D)
+$(call inherit-product, vendor/allwinner/apollo-p2/apollo-p2-vendor.mk)
+
 # Include standard wireless configuration
 include device/softwinner/common/config/wireless/wireless_config.mk
+
 
 
