@@ -13,6 +13,9 @@ PRODUCT_SHIPPING_API_LEVEL := 36
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.disable=true \
+    persist.sys.usb.config=adb \
+    persist.service.adb.enable=1 \
+    persist.service.debuggable=1
 
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 

@@ -19,7 +19,9 @@ BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/etc/firmware
 BOARD_HOSTAPD_DRIVER        := NL80211
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
+$(call soong_config_set,wpa_supplicant_8,wifi_hidl_unified_supplicant_service_rc_entry,true)
 BOARD_HAVE_BLUETOOTH        := true
 BOARD_BLUETOOTH_CONFIG_DIR  ?= device/softwinner/apollo/common/wireless/bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(BOARD_BLUETOOTH_CONFIG_DIR)
+
 
