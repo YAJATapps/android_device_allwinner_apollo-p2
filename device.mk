@@ -32,13 +32,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.spk_dul.used=false \
     ro.vendor.audio.eq=false
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    persist.sys.timezone=America/Toronto \
-    persist.sys.country=CA \
-    persist.sys.language=en
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=120
+
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.minui.default_rotation=ROTATION_NONE \
