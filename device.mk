@@ -50,12 +50,12 @@ PRODUCT_BOARD := p2
 PRODUCT_DEVICE := apollo-p2
 PRODUCT_BRAND := Allwinner
 PRODUCT_MANUFACTURER := Allwinner
+PRODUCT_PREBUILT_PATH := longan/out/$(TARGET_BOARD_IC)/$(PRODUCT_BOARD)/android
+
 ifeq ($(PRODUCT_ORANGE_PI_ZERO_2W), true)
     PRODUCT_MODEL := orangepizero2w
-    PRODUCT_PREBUILT_PATH := longan/out/$(TARGET_BOARD_IC)/$(PRODUCT_BOARD)/android
 else
     PRODUCT_MODEL := orangepizero3
-    PRODUCT_PREBUILT_PATH := longan/out/$(TARGET_BOARD_IC)/p3/android
 endif
 
 # Include prebuilt kernel
