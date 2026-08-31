@@ -1,6 +1,3 @@
-# Whether the build is for orange pi zero 2w (true) or orange pi zero 3 (false)
-PRODUCT_ORANGE_PI_ZERO_2W := true
-
 # Inherit common LineageOS
 $(call inherit-product, vendor/lineage/config/common.mk)
 
@@ -51,12 +48,7 @@ PRODUCT_DEVICE := apollo-p2
 PRODUCT_BRAND := Allwinner
 PRODUCT_MANUFACTURER := Allwinner
 PRODUCT_PREBUILT_PATH := longan/out/$(TARGET_BOARD_IC)/$(PRODUCT_BOARD)/android
-
-ifeq ($(PRODUCT_ORANGE_PI_ZERO_2W), true)
-    PRODUCT_MODEL := orangepizero2w
-else
-    PRODUCT_MODEL := orangepizero3
-endif
+PRODUCT_MODEL := orangepizero2w
 
 # Include prebuilt kernel
 PRODUCT_COPY_FILES += $(PRODUCT_PREBUILT_PATH)/bImage:kernel
