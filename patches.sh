@@ -32,3 +32,10 @@ if [ -f "$TOP/external/libudev-zero/Android.bp" ]; then
     fi
     sed -i '/\/\/external\/igt-gpu-tools/,/\/\/vendor:__subpackages__/c\        "\/\/visibility:public",' "$TOP/external/libudev-zero/Android.bp"
 fi
+
+# device/softwinner
+# Note: external/ffmpeg and external/ffmpeg_codec2 need to be cloned if you want better performance with FFmpeg Codec2
+if [ -f "$TOP/device/softwinner/apollo/common/media/config.mk" ]; then
+    echo "Patching device/softwinner: setting TARGET_USES_FFMPEG_CODEC2 to false..."
+    sed -i 's/TARGET_USES_FFMPEG_CODEC2 ?= true/TARGET_USES_FFMPEG_CODEC2 ?= false/' "$TOP/device/softwinner/apollo/common/media/config.mk"
+fi
