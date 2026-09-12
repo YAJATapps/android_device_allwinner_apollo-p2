@@ -7,13 +7,6 @@ PRODUCT_CHARACTERISTICS := tv,nosdcard
 $(call inherit-product, vendor/lineage/config/common_tv.mk)
 $(call inherit-product, device/google/atv/products/atv_base.mk)
 
-# Android TV
-PRODUCT_PACKAGES += \
-    LeanbackIME \
-    TvProvision \
-    TvSampleLeanbackLauncher \
-    TvSettingsTwoPanel
-
 PRODUCT_NAME := lineage_apollo_p2_tv
 
 # Device tree path.
