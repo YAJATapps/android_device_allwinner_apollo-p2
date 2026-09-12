@@ -1,7 +1,7 @@
 # Inherit from device.
 $(call inherit-product, device/allwinner/apollo-p2/device.mk)
 
-PRODUCT_AAPT_PREF_CONFIG := tvdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_CHARACTERISTICS := tv,nosdcard
 
 $(call inherit-product, vendor/lineage/config/common_tv.mk)

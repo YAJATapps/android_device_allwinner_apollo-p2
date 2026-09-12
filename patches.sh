@@ -39,3 +39,10 @@ if [ -f "$TOP/device/softwinner/apollo/common/media/config.mk" ]; then
     echo "Patching device/softwinner: setting TARGET_USES_FFMPEG_CODEC2 to false..."
     sed -i 's/TARGET_USES_FFMPEG_CODEC2 ?= true/TARGET_USES_FFMPEG_CODEC2 ?= false/' "$TOP/device/softwinner/apollo/common/media/config.mk"
 fi
+
+# device/lineage/sepolicy
+if [ -f "$TOP/device/lineage/sepolicy/atv/vendor/gmscore_app.te" ]; then
+    echo "Patching device/lineage/sepolicy: guarding apk_verity_prop with until_board_api..."
+    sed -i 's/^get_prop(gmscore_app, apk_verity_prop)/until_board_api(202604, `get_prop(gmscore_app, apk_verity_prop)\x27)/' "$TOP/device/lineage/sepolicy/atv/vendor/gmscore_app.te"
+fi
+
