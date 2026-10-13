@@ -46,3 +46,33 @@ if [ -f "$TOP/device/lineage/sepolicy/atv/vendor/gmscore_app.te" ]; then
     sed -i 's/^get_prop(gmscore_app, apk_verity_prop)/until_board_api(202604, `get_prop(gmscore_app, apk_verity_prop)\x27)/' "$TOP/device/lineage/sepolicy/atv/vendor/gmscore_app.te"
 fi
 
+# bootable/recovery (C++23 missing headers)
+if [ -f "$TOP/bootable/recovery/volume_manager/PublicVolume.cpp" ]; then
+    if ! grep -q "<algorithm>" "$TOP/bootable/recovery/volume_manager/PublicVolume.cpp"; then
+        echo "Patching bootable/recovery: adding <algorithm> to PublicVolume.cpp..."
+        sed -i '/#include "PublicVolume.h"/a #include <algorithm>' "$TOP/bootable/recovery/volume_manager/PublicVolume.cpp"
+    fi
+fi
+if [ -f "$TOP/bootable/recovery/volume_manager/include/volume_manager/VolumeManager.h" ]; then
+    if ! grep -q "<vector>" "$TOP/bootable/recovery/volume_manager/include/volume_manager/VolumeManager.h"; then
+        echo "Patching bootable/recovery: adding <vector> to VolumeManager.h..."
+        sed -i '/#include <string>/a #include <vector>' "$TOP/bootable/recovery/volume_manager/include/volume_manager/VolumeManager.h"
+    fi
+fi
+
+# system/vold (C++23 missing header)
+if [ -f "$TOP/system/vold/model/PublicVolume.cpp" ]; then
+    if ! grep -q "<algorithm>" "$TOP/system/vold/model/PublicVolume.cpp"; then
+        echo "Patching system/vold: adding <algorithm> to PublicVolume.cpp..."
+        sed -i '/#include <utils\/Timers.h>/a #include <algorithm>' "$TOP/system/vold/model/PublicVolume.cpp"
+    fi
+fi
+
+# longan
+if [ -d "$TOP/longan" ]; then
+    echo "Patching longan: creating .find-ignore and accepting disclaimer..."
+    touch "$TOP/longan/.find-ignore"
+    touch "$TOP/longan/.disclaimer_accpet"
+fi
+
+
