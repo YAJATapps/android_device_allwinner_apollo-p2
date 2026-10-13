@@ -75,4 +75,12 @@ if [ -d "$TOP/longan" ]; then
     touch "$TOP/longan/.disclaimer_accpet"
 fi
 
+# frameworks/base: NotificationAttentionHelper NPE when mLineageNotificationLights is null
+NMS_ATTENTION_HELPER="$TOP/frameworks/base/services/core/java/com/android/server/notification/NotificationAttentionHelper.java"
+if [ -f "$NMS_ATTENTION_HELPER" ] && ! grep -q "mLineageNotificationLights != null && !mLineageNotificationLights.showLightsScreenOn()" "$NMS_ATTENTION_HELPER"; then
+    echo "Patching frameworks/base: fixing mLineageNotificationLights NPE in NotificationAttentionHelper..."
+    sed -i 's/if (!mLineageNotificationLights\.showLightsScreenOn())/if (mLineageNotificationLights != null \&\& !mLineageNotificationLights.showLightsScreenOn())/g' "$NMS_ATTENTION_HELPER"
+fi
+
+
 
