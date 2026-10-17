@@ -82,5 +82,31 @@ if [ -f "$NMS_ATTENTION_HELPER" ] && ! grep -q "mLineageNotificationLights != nu
     sed -i 's/if (!mLineageNotificationLights\.showLightsScreenOn())/if (mLineageNotificationLights != null \&\& !mLineageNotificationLights.showLightsScreenOn())/g' "$NMS_ATTENTION_HELPER"
 fi
 
+# packages/apps/SetupWizard
+SUW_KT="$TOP/packages/apps/SetupWizard/app/src/main/java/org/lineageos/setupwizard/WelcomeActivity.kt"
+SUW_JAVA="$TOP/packages/apps/SetupWizard/src/org/lineageos/setupwizard/WelcomeActivity.java"
+if [ -f "$SUW_KT" ]; then
+    echo "Patching packages/apps/SetupWizard: auto-finishing setup on boot (Kotlin)..."
+    sed -i 's/get() = Build.TYPE == "eng"/get() = true/' "$SUW_KT"
+    if ! grep -q "finishSetupWizard(this)" "$SUW_KT"; then
+        sed -i '/super.onCreate(savedInstanceState)/a \        if (!isFinishing) { SetupWizardUtils.finishSetupWizard(this); return }' "$SUW_KT"
+    fi
+elif [ -f "$SUW_JAVA" ]; then
+    echo "Patching packages/apps/SetupWizard: auto-finishing setup on boot..."
+    sed -i 's/if (Build.TYPE.equals("eng"))/SetupWizardUtils.finishSetupWizard(this); if (false)/' "$SUW_JAVA"
+fi
+
+SUW_ACT_KT="$TOP/packages/apps/SetupWizard/app/src/main/java/org/lineageos/setupwizard/SetupWizardActivity.kt"
+SUW_ACT_JAVA="$TOP/packages/apps/SetupWizard/src/org/lineageos/setupwizard/SetupWizardActivity.java"
+if [ -f "$SUW_ACT_KT" ]; then
+    echo "Patching packages/apps/SetupWizard: disabling forced gesture navigation (Kotlin)..."
+    sed -i 's/^[[:space:]]*SetupWizardUtils.enableGesturalNavigation(this)/\/\/ SetupWizardUtils.enableGesturalNavigation(this)/' "$SUW_ACT_KT"
+elif [ -f "$SUW_ACT_JAVA" ]; then
+    echo "Patching packages/apps/SetupWizard: disabling forced gesture navigation..."
+    sed -i 's/^[[:space:]]*SetupWizardUtils.enableGesturalNavigation(this);/\/\/ SetupWizardUtils.enableGesturalNavigation(this);/' "$SUW_ACT_JAVA"
+fi
+
+echo "Patches applied successfully."
+
 
 
